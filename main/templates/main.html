@@ -17,6 +17,11 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        .item-category {
+            font-size: large;
+            font-weight: bold;
+        }
+
         .item-info {
             font-weight: bold;
         }
@@ -40,10 +45,13 @@
 <body>
     <center>
     <h1>Last Stand in Atomville</h1>
-    <p>Pak Bepe mendengar berita tentang potensi perang nuklir yang akan terjadi dalam waktu dekat. 
-        Dengan khawatir, Pak Bepe teringat bahwa dia memiliki sebuah bunker di daerah kutek. 
-        Pak Bepe segera merasa perlu untuk mengumpulkan barang-barang yang diperlukan dengan secepatnya 
-        agar dia dapat bertahan hidup dalam bunker tersebut selama masa krisis yang mungkin berlangsung tanpa batas waktu yang bisa ditentukan.
+    <p>
+        Pak Bepe mendengar kabar tentang potensi perang nuklir yang mungkin pecah dalam waktu dekat. 
+        Penuh kekhawatiran, dia tiba-tiba teringat memiliki sebuah bunker di suatu tempat terpencil di daerah kutek. 
+        Langsung saja, Pak Bepe merasa mendesak untuk segera mengumpulkan segala perlengkapan yang diperlukan dengan secepat mungkin.
+        Dia menyadari bahwa ini adalah satu-satunya cara untuk memastikan kelangsungan hidupnya dalam bunker tersebut 
+        selama masa krisis yang dapat berlangsung tanpa batas waktu yang bisa diprediksi. Pak Bepe juga ingin membagi setiap barangnya kedalam beberapa kategori
+        agar dapat dia cari dengan mudah ketika membutuhkannya.
     </p>
     </center>
 
@@ -78,19 +86,20 @@
 
     <div class="st">
         <p>Selain barang-barang yang telah disebutkan sebelumnya, Pak Bepe masih memiliki pilihan barang lain yang dapat dibawa dan berguna di masa depan. 
-            Sekarang tugas Anda adalah membantu Pak Bepe dalam memilih barang-barang yang harus dibawa!
+            Sekarang Pak Bepe bergegas menuju supermarket dan toko peralatan terdekat untuk memenuhi semua barang bawaan yang harus dia bawa!
         </p>
     </div>
 
-    <h2>Barang bawaan Pak Bepe:</h2>
+    <h2>Barang yang dibawa Pak Bepe:</h2>
     
     {% for item_info in items %}
     <div class="item-container">
+        <p class="item-category">Kategori: {{ item_info.category }}</p>
         <p class="item-info">Nama Barang: {{ item_info.item }}</p>
         <p class="item-info">Jumlah: {{ item_info.amount }}</p>
         <p class="item-description">Deskripsi: {{ item_info.description }}</p>
     </div>
     <hr>
-{% endfor %}
+    {% endfor %}
 
 </body>
