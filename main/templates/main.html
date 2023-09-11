@@ -31,6 +31,10 @@
             margin: 10px 0;
         }
 
+        .st{
+            border-top: 5px solid #ccc;
+        }
+
     </style>
 </head>
 <body>
@@ -84,7 +88,7 @@
     <div class="item-container">
         <p class="item-info">Nama Barang: {{ item_info.item }}</p>
         <p class="item-info">Jumlah: {{ item_info.amount }}</p>
-        <p class="item-description">Deskripsi: {{ item_info.desc }}</p>
+        <p class="item-description">Deskripsi: {{ item_info.description }}</p>
     </div>
     <hr>
 {% endfor %}
