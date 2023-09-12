@@ -1,105 +1,12 @@
-<head>
-    <title>Last Stand in Atomville</title>
-    <style>
-        .item {
-            display: inline-block;
-            margin-right: 2px;
-            vertical-align: top;
-            max-width: 460px; 
-            word-wrap: break-word;
-        }
-
-        .item-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .item-category {
-            font-size: large;
-            font-weight: bold;
-        }
-
-        .item-info {
-            font-weight: bold;
-        }
-
-        .item-description {
-            margin-top: 5px;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #ccc;
-            margin: 10px 0;
-        }
-
-        .st{
-            border-top: 5px solid #ccc;
-        }
-
-    </style>
-</head>
-<body>
-    <center>
+<center>
     <h1>Last Stand in Atomville</h1>
-    <p>
-        Pak Bepe mendengar kabar tentang potensi perang nuklir yang mungkin pecah dalam waktu dekat. 
-        Penuh kekhawatiran, dia tiba-tiba teringat memiliki sebuah bunker di suatu tempat terpencil di daerah kutek. 
-        Langsung saja, Pak Bepe merasa mendesak untuk segera mengumpulkan segala perlengkapan yang diperlukan dengan secepat mungkin.
-        Dia menyadari bahwa ini adalah satu-satunya cara untuk memastikan kelangsungan hidupnya dalam bunker tersebut 
-        selama masa krisis yang dapat berlangsung tanpa batas waktu yang bisa diprediksi. Pak Bepe juga ingin membagi setiap barangnya kedalam beberapa kategori
-        agar dapat dia cari dengan mudah ketika membutuhkannya.
-    </p>
-    </center>
+</center>
 
+<!--TUGAS 2-->
 
-    <h3>Berikut saran barang-barang yang mungkin bisa dibawa:</h3>
+<h5>Name: </h5>
+<p>{{name}}</p> 
+<h5>Class: </h5>
+<p>{{class}}</p> 
 
-    <div class="item">
-        <img src="https://drivethru.klikindomaret.com/tz0m/wp-content/uploads/sites/23/2021/05/le-minerale-600ml-1.jpg" alt="Air Mineral" width="300" height="200">
-        <figcaption><strong>Air mineral</strong></figcaption>
-        <figcaption>Sangat berguna agar dapat selalu terhidrasi, terutama dalam situasi darurat atau ketika akses ke sumber air bersih terbatas.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://mmc.tirto.id/image/2021/11/22/kotak-p3k-istockphoto_ratio-16x9.jpg" alt="Kotak P3K" width="300" height="200">
-        <figcaption><strong>Kotak P3K</strong></figcaption>
-        <figcaption>Penting dibawa ketika ada yang cedera atau memerlukan pertolongan pertama, 
-            karena kotak P3K berisi peralatan medis dasar yang dapat sangat membantu dalam memberikan pertolongan pertama dalam situasi darurat.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://s1.bukalapak.com/attachment/622881/makanan_kaleng.jpg" alt="Makanan Kaleng" width="300" height="200">
-        <figcaption><strong>Makanan Kaleng</strong></figcaption>
-        <figcaption>Tidak memungkinkan untuk memasak dalam bunker karena keterbatasan peralatan, makanan dalam kaleng adalah alternatif yang bagus.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://m.media-amazon.com/images/I/61DkQodTIDL._AC_UY1000_.jpg" alt="Gas Mask" width="300" height="200">
-        <figcaption><strong>Masker Gas</strong></figcaption>
-        <figcaption>Tidak mungkin akan selalu berada di dalam bunker dengan persediaan yang terbatas, 
-            masker gas ini sangat berguna untuk melindungi dari udara nuklir dan zat berbahaya lainnya ketika mencari persediaan keluar bunker.</figcaption>
-    </div>
-
-    <div class="st">
-        <p>Selain barang-barang yang telah disebutkan sebelumnya, Pak Bepe masih memiliki pilihan barang lain yang dapat dibawa dan berguna di masa depan. 
-            Sekarang Pak Bepe bergegas menuju supermarket dan toko peralatan terdekat untuk memenuhi semua barang bawaan yang harus dia bawa!
-        </p>
-    </div>
-
-    <h2>Barang yang dibawa Pak Bepe:</h2>
-    
-    {% for item_info in items %}
-    <div class="item-container">
-        <p class="item-category">Kategori: {{ item_info.category }}</p>
-        <p class="item-info">Nama Barang: {{ item_info.item }}</p>
-        <p class="item-info">Jumlah: {{ item_info.amount }}</p>
-        <p class="item-description">Deskripsi: {{ item_info.description }}</p>
-    </div>
-    <hr>
-    {% endfor %}
-
-</body>
+<!--TUGAS 2-->

@@ -23,6 +23,8 @@ def show_main(request):
 
     context = {
         'items': items,
+        'name' : 'Fadrian Yhoga Pratama',
+        'class' : 'PBP A'
     }
 
     return render(request, "main.html", context)
