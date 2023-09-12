@@ -32,9 +32,9 @@ urllib3
 ```
 pip install -r requirements.txt
 ```
-3. Buat proyek Django baru bernama `inventory-assignments` menggunakan perintah 
+3. Buat proyek Django baru bernama `inventory_assignments` menggunakan perintah 
 ```
-django-admin startproject inventory-assignments .
+django-admin startproject inventory_assignments .
 ```
 
 * ## Membuat Aplikasi `main`
