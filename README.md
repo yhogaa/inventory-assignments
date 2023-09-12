@@ -99,14 +99,12 @@ def show_main(request):
 
 2. Pada direktori `main`, buat direktori baru dengan nama `templates` kemudian buat file `main.html` di dalamnya. Pada file `main.html`, modifikasi tampilan pada `main.html` menggunakan variabel yang ada pada `views.py`.
 ```html
-<center>
-    <h1>Last Stand in Atomville</h1>
-</center>
-
+...
 <h5>Name: </h5>
 <p>{{name}}</p> 
 <h5>Class: </h5>
 <p>{{class}}</p> 
+...
 ```
 
 * ## Mengonfigurasi _Routing_ URL
