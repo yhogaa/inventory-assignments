@@ -153,7 +153,30 @@ python manage.py migrate && gunicorn inventory_assignments.wsgi
 6. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses *deployment* aplikasi.
 
 ## **Bagan**
+![Bagan](https://github.com/yhogaa/notes/assets/113284837/95496d97-625c-43d4-be02-f5981f33c5a3)
+*Request* oleh user akan diproses melalui `urls.py` dimana melakukan URL *mapping* yang akan meneruskan *request* tersebut ke `views.py`. Jika diperlukan interaksi dengan database, *Views* akan melakukan *query* ke `models.py` dan hasil dari *query* tersebut akan dikirim kembali ke *Views*. Setelah *request* selesai diproses, hasilnya akan dipetakan ke `main.html` yang sesuai di dalam *template*, dan akhirnya request akan ditampilkan sebagai halaman web kepada *user*.
+
 
 ## **Virtual Environment**
+**_Virtual Environment_** digunakan untuk mengisolasi *dependencies* proyek sehingga tiap proyek dapat memiliki versi pustaka yang berbeda tanpa konflik. *Virtual Environment* sangat berguna ketika kita membutuhkan *dependencies* yang berbeda-beda antara project satu dengan lainnya yang berjalan pada satu system operasi yang sama. Kita bisa saja membuat aplikasi web berbasis *Django* tanpa menggunakan *Virtual Environment*, tetapi ini bisa menimbukan Konflik *dependencies* karena tanpa isolasi yang disediakan oleh *virtual environment*, versi pustaka yang berbeda dari proyek yang berbeda dapat saling bertabrakan, yang dapat menyebabkan masalah kompatibilitas dan kesalahan.
 
 ## **MVC, MVT, dan MVVM**
+- **_Model:_** Mengatur dan mengelola data dari aplikasi. 
+- **_View:_** Pengatur tampilan dan mengambil data dari model untuk disajikan kepada pengguna.
+
+#### 1. MVC (Model-View-Controller)
+**_Controller:_** Komunikator antara view dan model.
+
+#### 2. MVT (Model-View-Template)
+**_Template:_** Mengatur tampilan HTML atau antarmuka pengguna
+
+#### 3. MVVM (Model-View-Viewmodel)
+**_Viewmodel:_** Penghubung antara Model dan View, bertanggung jawab untuk menyimpan status View dan menjalankan operasi apa pun yang diperlukan untuk mengubah data dalam Model ke dalam format yang dapat ditampilkan oleh View.
+
+Perbedaan antara ketiganya adalah:
+
+| MVC           | MVT           | MVVM  |
+| :-------------: |:-------------:| :-------------:|
+| Memiliki hubungan “many-to-many” antara Controller & View      |  Memiliki hubungan “one-to-one” antara View & Template      |   Memiliki hubungan “one-to-many” antara View & ViewModel |
+| 	Controller adalah titik masuk ke Aplikasi     | View adalah titik masuk ke Aplikasi | View adalah titik masuk ke Aplikasi |
+| View adalah struktur aktif. Ia meminta informasi dari lapisan Model. Controller hanya mengubah keadaan lapisan Model dan View. | Tampilannya pasif. Template meminta informasi dari lapisan Model dan memberikannya ke View     |    Mirip dengan MVT, tetapi Viewmodel harus memanipulasi informasi sebelum memberikannya ke View |
