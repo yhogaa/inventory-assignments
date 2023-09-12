@@ -151,7 +151,7 @@ python manage.py migrate && gunicorn inventory_assignments.wsgi
 6. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses *deployment* aplikasi.
 
 ## **Bagan**
-![Bagan](https://github.com/yhogaa/notes/assets/113284837/95496d97-625c-43d4-be02-f5981f33c5a3)
+![bagan](https://github.com/yhogaa/inventory-assignments/assets/113284837/52526b75-17be-4334-866b-bcf7b9dc763f)
 *Request* oleh user akan diproses melalui `urls.py` dimana melakukan URL *mapping* yang akan meneruskan *request* tersebut ke `views.py`. Jika diperlukan interaksi dengan database, *Views* akan melakukan *query* ke `models.py` dan hasil dari *query* tersebut akan dikirim kembali ke *Views*. Setelah *request* selesai diproses, hasilnya akan dipetakan ke `main.html` yang sesuai di dalam *template*, dan akhirnya request akan ditampilkan sebagai halaman web kepada *user*.
 
 
