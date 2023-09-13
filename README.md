@@ -70,7 +70,7 @@ class Item(models.Model):
 2. Buat dan aplikasikan migrasi pada model dengan menjalankan perintah berikut.
 * Membuat migrasi model
 ```
-python manage.py makemigrations.
+python manage.py makemigrations
 ```
 > `makemigrations` menciptakan berkas migrasi yang berisi perubahan model yang belum diaplikasikan ke dalam basis data. 
 
