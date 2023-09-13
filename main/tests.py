@@ -9,7 +9,8 @@ class mainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
 
-     # Test if 'name' exists in context
+    # BONUS
+    # Test if 'name' exists in context
     def test_name_is_exist(self):
         response = Client().get('/main/')
         self.assertIn('name', response.context)

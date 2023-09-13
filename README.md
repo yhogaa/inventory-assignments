@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 3. Setelah itu, aplikasi `main` sudah berhasil didaftarkan ke dalam proyek `inventory_assignments`.
 
 * ## Membuat Model Dasar Aplikasi `main`
-1. Pada berkas `models.py` di direktori `main`, isi dengan kode berikut yang berisi atribut-atribut yang akan kita gunakan
+1. Pada file `models.py` di direktori `main`, isi dengan kode berikut yang berisi atribut-atribut yang akan kita gunakan
 ```python
 from django.db import models
 
