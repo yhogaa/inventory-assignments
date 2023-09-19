@@ -285,7 +285,7 @@ def create_item(request):
     return render(request, "create_item.html", context)
 ```
 
-3. Ubah fungsi `show_main` pada `view.py` menjadi seperti berikut.
+3. Ubah fungsi `show_main` pada `views.py` menjadi seperti berikut.
 ```python
 def show_main(request):
     items = Item.objects.all()
@@ -367,7 +367,7 @@ def show_json(request):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 ```
 
-3. Untuk mengembalikan objek berdasarkan ID, tambahkan `filter` dengan ID tertentu ke dalam pengambilan hasil dari `query`.
+3. Untuk mengembalikan objek berdasarkan ID, tambahkan *filter* dengan ID tertentu ke dalam pengambilan hasil dari *query*.
 - **XML _by_ id**
 ```python
 def show_xml_by_id(request, id):
@@ -387,7 +387,7 @@ def show_json_by_id(request, id):
 from main.views import show_main, create_item, show_xml, show_json, show_xml_by_id, show_json_by_id 
 ```
 
-2. Tambahkan `path url` untuk masing-masing fungsi ke dalam `urlpatterns`.
+2. Tambahkan *path url* untuk masing-masing fungsi ke dalam `urlpatterns`.
 ```python
 urlpatterns = [
     path('', show_main, name='show_main'),
@@ -398,7 +398,7 @@ urlpatterns = [
     path('json/<int:id>/', show_json_by_id, name='show_json_by_id'), 
 ]
 ```  
-Sekarang `form` input sudah bisa digunakan. Jalankan dengan perintah `python manage.py runserver` dan bukalah [http://localhost:8000/main/](http://localhost:8000/main/)
+Sekarang `form` input sudah bisa digunakan. Jalankan dengan perintah `python manage.py runserver` dan bukalah [http://localhost:8000](http://localhost:8000).
 
 ## **Mengakses URL menggunakan Postman**
 1. HTML
