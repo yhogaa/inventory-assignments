@@ -136,9 +136,22 @@
                 <p class="item-category">Kategori: {{ item.category }}</p>
                 <p class="item-info">Nama Barang: {{ item.name }}</p>
                 <p class="item-info">Jumlah: {{ item.amount }}</p>
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Tambah</button>
+                </form>
+                <form method="post" action="{% url 'main:reduce_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Kurangi</button>
+                </form>
                 <p class="item-info">Tanggal Expired: {{ item.expiry_date }}</p>
                 <p class="item-info">Lokasi: {{ item.location }}</p>
                 <p class="item-description">Deskripsi: {{ item.description }}</p>
+                <a href="{% url 'main:delete_item' item.id %}">
+                    <button>
+                        Hapus
+                    </button>
+                </a>
             </div>
         </tr>
         {% endfor %}

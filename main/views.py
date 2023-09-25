@@ -5,7 +5,7 @@ from main.forms import ItemForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.core import serializers
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login
@@ -27,6 +27,32 @@ def show_main(request):
     }
 
     return render(request, "main.html", context)
+
+def delete_item(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    if item.user == request.user:
+        item.delete()
+
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def add_amount(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+
+    if item.user == request.user:
+        item.amount += 1
+        item.save()
+    
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def reduce_amount(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+
+    if item.user == request.user:
+        if item.amount > 0:
+            item.amount -= 1
+            item.save()
+
+    return HttpResponseRedirect(reverse('main:show_main'))
 
 def create_item(request):
     form = ItemForm(request.POST or None)
