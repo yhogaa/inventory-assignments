@@ -411,3 +411,63 @@ Sekarang `form` input sudah bisa digunakan. Jalankan dengan perintah `python man
 ![XML BY ID](https://github.com/yhogaa/inventory-assignments/assets/113284837/0fd83648-a390-45c9-acef-3cada55bc186)
 5. JSON *by* ID
 ![JSON BY ID](https://github.com/yhogaa/inventory-assignments/assets/113284837/a73837fa-1971-4753-99ed-f182d6d54b5f)
+
+
+***
+
+# Tugas 3 
+
+## **Apa itu `UserCreationForm`?**
+Django `UserCreationForm` adalah sebuah *built-in* form yang disediakan oleh Django yang memungkinkan untuk membuat form registrasi pengguna pada web kita.
+Form ini mewarisi `UserCreationForm` *class* dalam kerangka otentikasi Django dan mencakup *fields* untuk username dan password.
+- **Kelebihan** Django `UserCreationForm`:
+    - Mudah digunakan dan membutuhkan usaha minimal dalam penulisan kode.
+    - Termasuk validasi bawaan untuk *fields* password, memastikan bahwa password cocok dan memenuhi persyaratan minimum.
+    - Secara otomatis mengenkripsi password untuk tujuan keamanan.
+    - Dapat disesuaikan untuk menyertakan *fields* tambahan sesuai kebutuhan.
+  
+- **Kekurangan** Django `UserCreationForm`:
+    - Hanya mencakup *fields* untuk username dan password, sehingga *fields* tambahan seperti email atau nama depan / belakang harus ditambahkan secara manual.
+    - Mungkin tidak sesuai dengan kebutuhan proyek tertentu, memerlukan penyesuaian tambahan.
+    - Mungkin tidak cocok untuk formulir registrasi pengguna yang lebih kompleks yang memerlukan validasi tambahan atau *fields* kustom.
+
+## **_Authentication_ & _Authorization_**
+_Authentication_ dan _Authorization_ adalah dua konsep penting dalam pengamanan aplikasi, termasuk dalam konteks Django. Berikut adalah perbedaan antara otentikasi dan _Authorization_ serta pentingnya keduanya:
+- **Perbedaan antara _Authentication_ dan Otorisasi:**
+    - _Authentication_ adalah proses verifikasi identitas pengguna, sedangkan _Authorization_ adalah proses penentuan hak akses pengguna setelah identitasnya diverifikasi.
+    - Proses otentikasi dilakukan terlebih dahulu sebelum proses _Authorization_.
+    - _Authentication_ memeriksa apakah pengguna memiliki kredensial yang valid, seperti username dan password, sedangkan _Authorization_ memeriksa apakah pengguna memiliki hak akses untuk melakukan tindakan tertentu.
+- **Pentingnya _Authentication_ dan Otorisasi:**
+    - _Authentication_ dan _Authorization_ sangat penting dalam pengamanan aplikasi karena dapat mencegah akses yang tidak sah ke data sensitif.
+    - _Authentication_ dan _Authorization_ dapat membantu mencegah serangan siber seperti peretasan akun dan pencurian data.
+    - Dalam Django, otentikasi dan _Authorization_ dapat diimplementasikan dengan menggunakan kerangka otentikasi bawaan Django atau dengan menggunakan teknologi otentikasi lain seperti OAuth 2.0.
+
+Secara keseluruhan, otentikasi dan _Authorization_ adalah konsep penting dalam pengamanan aplikasi, termasuk dalam konteks Django. Keduanya dapat membantu mencegah akses yang tidak sah ke data sensitif dan mencegah serangan siber.
+
+## **Apa itu _Cookies_🍪?**
+_Cookies_ adalah file teks kecil yang disimpan di komputer pengguna oleh aplikasi web. _Cookies_ digunakan untuk menyimpan informasi tentang pengguna dan preferensi mereka, seperti login pengguna, preferensi bahasa, dan preferensi tampilan. Dalam konteks Django, _cookies_ digunakan untuk mengelola data sesi pengguna. Django menggunakan _cookies_ untuk mengidentifikasi pengguna yang telah login dan menyimpan informasi tentang sesi pengguna, seperti preferensi bahasa dan preferensi tampilan. Berikut adalah cara Django menggunakan _cookies_ untuk mengelola data sesi pengguna:
+
+- Ketika pengguna login, Django membuat _cookie_ yang berisi ID sesi pengguna.
+- _Cookie_ ini dikirim ke browser pengguna dan disimpan di komputer pengguna.
+- Setiap kali pengguna melakukan permintaan ke server, _cookie_ dikirim ke server bersama permintaan.
+- Server menggunakan _cookie_ untuk mengidentifikasi pengguna dan mengambil data sesi pengguna yang sesuai.
+- Data sesi pengguna digunakan untuk menyesuaikan tampilan dan perilaku aplikasi web sesuai dengan preferensi pengguna.
+
+Penggunaan _cookies_ dalam Django sangat penting karena memungkinkan aplikasi web untuk menyimpan informasi tentang pengguna dan preferensi mereka. Ini memungkinkan aplikasi web untuk menyesuaikan tampilan dan perilaku sesuai dengan preferensi pengguna, meningkatkan pengalaman pengguna. Namun, penggunaan _cookies_ juga harus dilakukan dengan hati-hati untuk memastikan keamanan dan privasi pengguna terjaga.
+![Cookies](https://github.com/yhogaa/inventory-assignments/assets/113284837/2538f139-c9b8-4637-8136-a4412d00c0ac)
+## **Apakah _Cookies_aman?**
+Penggunaan _cookies_ pada umumnya aman dalam pengembangan web, namun ada beberapa risiko potensial yang harus diwaspadai. Beberapa risiko tersebut antara lain:
+
+- **_Cross-site scripting (XSS)_**: Penyerang dapat menggunakan XSS untuk menyisipkan kode berbahaya ke dalam sebuah situs web, yang kemudian dapat digunakan untuk mencuri _cookies_ atau informasi sensitif lainnya.
+- **_Cross-site request forgery (CSRF)_**: Penyerang dapat menggunakan CSRF untuk menipu pengguna agar melakukan tindakan di situs web tanpa sepengetahuan atau persetujuannya, seperti melakukan pembelian atau mengubah kata sandi. Ini dapat dilakukan dengan mencuri _cookies_ pengguna dan menggunakannya untuk mengotentikasi permintaan penyerang.
+- **_Session hijacking_**: Penyerang dapat menggunakan _session hijacking_ untuk mengambil alih sesi pengguna dengan mencuri _cookies_ mereka. Ini dapat memungkinkan penyerang untuk menyamar sebagai pengguna dan melakukan tindakan atas nama mereka.
+
+Untuk mengurangi risiko tersebut, pengembang dapat mengambil beberapa langkah, antara lain:
+
+- **Menggunakan _cookies_ yang aman**: Pengembang harus menggunakan _cookies_ yang aman yang hanya ditransmisikan melalui koneksi HTTPS dan memiliki flag HttpOnly. Ini dapat membantu mencegah penyerang mencuri _cookies_ menggunakan serangan XSS.
+- **Menggunakan token anti-CSRF**: Pengembang dapat menggunakan token anti-CSRF untuk mencegah serangan CSRF. Token ini dihasilkan oleh server dan disertakan dalam setiap permintaan, dan diverifikasi oleh server untuk memastikan bahwa permintaan tersebut sah.
+- **Menerapkan _session timeouts_**: Pengembang dapat menerapkan _session timeouts_ untuk secara otomatis logout pengguna setelah jangka waktu tertentu ketika tidak ada aktivitas. Ini dapat membantu mencegah serangan session hijacking.
+
+Secara keseluruhan, penggunaan _cookies_ pada umumnya aman dalam pengembangan web, namun pengembang harus menyadari risiko potensial dan mengambil langkah-langkah untuk mengurangi risiko tersebut. Dengan menggunakan _cookies_ yang aman, token anti-CSRF, dan _session timeouts_, pengembang dapat membantu memastikan bahwa situs web mereka aman dan melindungi informasi sensitif pengguna.
+
+## **Implementasi _Autentikasi_, _Session_, dan _Cookies_**
