@@ -444,7 +444,7 @@ _Authentication_ dan _Authorization_ adalah dua konsep penting dalam pengamanan 
 
 Secara keseluruhan, otentikasi dan _Authorization_ adalah konsep penting dalam pengamanan aplikasi, termasuk dalam konteks Django. Keduanya dapat membantu mencegah akses yang tidak sah ke data sensitif dan mencegah serangan siber.
 
-## **Apa itu _Cookies_🍪?**
+## **Apa itu _Cookies_ 🍪?**
 _Cookies_ adalah file teks kecil yang disimpan di komputer pengguna oleh aplikasi web. _Cookies_ digunakan untuk menyimpan informasi tentang pengguna dan preferensi mereka, seperti login pengguna, preferensi bahasa, dan preferensi tampilan. Dalam konteks Django, _cookies_ digunakan untuk mengelola data sesi pengguna. Django menggunakan _cookies_ untuk mengidentifikasi pengguna yang telah login dan menyimpan informasi tentang sesi pengguna, seperti preferensi bahasa dan preferensi tampilan. Berikut adalah cara Django menggunakan _cookies_ untuk mengelola data sesi pengguna:
 
 - Ketika pengguna login, Django membuat _cookie_ yang berisi ID sesi pengguna.
@@ -455,7 +455,7 @@ _Cookies_ adalah file teks kecil yang disimpan di komputer pengguna oleh aplikas
 
 Penggunaan _cookies_ dalam Django sangat penting karena memungkinkan aplikasi web untuk menyimpan informasi tentang pengguna dan preferensi mereka. Ini memungkinkan aplikasi web untuk menyesuaikan tampilan dan perilaku sesuai dengan preferensi pengguna, meningkatkan pengalaman pengguna. Namun, penggunaan _cookies_ juga harus dilakukan dengan hati-hati untuk memastikan keamanan dan privasi pengguna terjaga.
 ![Cookies](https://github.com/yhogaa/inventory-assignments/assets/113284837/2538f139-c9b8-4637-8136-a4412d00c0ac)
-## **Apakah _Cookies_aman?**
+## **Apakah _Cookies_ aman?**
 Penggunaan _cookies_ pada umumnya aman dalam pengembangan web, namun ada beberapa risiko potensial yang harus diwaspadai. Beberapa risiko tersebut antara lain:
 
 - **_Cross-site scripting (XSS)_**: Penyerang dapat menggunakan XSS untuk menyisipkan kode berbahaya ke dalam sebuah situs web, yang kemudian dapat digunakan untuk mencuri _cookies_ atau informasi sensitif lainnya.
