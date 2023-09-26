@@ -4,6 +4,11 @@
 
 > Akses Aplikasi di: [https://last-stand-in-atomville.adaptable.app/main/](https://last-stand-in-atomville.adaptable.app/main/)
 
+### Daftar Tugas:
+- **[Tugas 2](#tugas-2)**<br>
+- **[Tugas 3](#tugas-3)**<br>
+- **[Tugas 4](#tugas-4)**<br>
+
 # Tugas 2
 ## **Implementasi Aplikasi**
 
@@ -415,7 +420,7 @@ Sekarang `form` input sudah bisa digunakan. Jalankan dengan perintah `python man
 
 ***
 
-# Tugas 3 
+# Tugas 4
 
 ## **Apa itu `UserCreationForm`?**
 Django `UserCreationForm` adalah sebuah *built-in* form yang disediakan oleh Django yang memungkinkan untuk membuat form registrasi pengguna pada web kita.
@@ -471,3 +476,129 @@ Untuk mengurangi risiko tersebut, pengembang dapat mengambil beberapa langkah, a
 Secara keseluruhan, penggunaan _cookies_ pada umumnya aman dalam pengembangan web, namun pengembang harus menyadari risiko potensial dan mengambil langkah-langkah untuk mengurangi risiko tersebut. Dengan menggunakan _cookies_ yang aman, token anti-CSRF, dan _session timeouts_, pengembang dapat membantu memastikan bahwa situs web mereka aman dan melindungi informasi sensitif pengguna.
 
 ## **Implementasi _Autentikasi_, _Session_, dan _Cookies_**
+* ## Register
+1. Buatlah fungsi `register` pada `views.py` yang berada di `main`. Jangan lupa untuk tambahkan beberapa import berikut.
+```python
+from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages  
+```
+2. Buat *file* baru bernama `register.html` pada folder `main/templates` sebagai tampilan ketika *register user*.
+3. Buka `urls.py` yang ada di `main` kemudian import fungsi yang telah dibuat tadi. Jangan lupa juga untuk menambahkan *path url* ke dalam `urlpatterns`
+
+* ## Login
+1. Buatlah fungsi `login_user` pada `views.py` yang berada di `main`. Tambahkan import `authenticate` dan `login` berikut.
+```python
+from django.contrib.auth import authenticate, login
+```
+2. Buat *file* baru bernama `login.html` pada folder `main/templates` sebagai tampilan ketika *login user*.
+3. Buka `urls.py` yang ada di `main` kemudian import fungsi yang telah dibuat tadi. Jangan lupa juga untuk menambahkan *path url* ke dalam `urlpatterns`
+
+
+* ## Logout
+1. Buatlah fungsi `logout_user` pada `views.py` yang berada di `main`. Tambahkan import `logout` berikut.
+```python
+from django.contrib.auth import logout
+```
+2. Buka `main.html` kemudian tambahkan tombol untuk *log out*.
+3. Buka `urls.py` yang ada di `main` kemudian import fungsi yang telah dibuat tadi. Jangan lupa juga untuk menambahkan *path url* ke dalam `urlpatterns`
+
+* ##  Merestriksi akses halaman _main_
+1. Buka `views.py` pada `main` dan tambahkan import `login_required` berikut.
+```python
+from django.contrib.auth.decorators import login_required
+```
+2. Tambahkan `@login_required(login_url='/login')` di atas fungsi `show_main` agar halaman *main* hanya bisa diakses oleh pengguna yang login saja.
+```python
+...
+@login_required(login_url='/login')
+def show_main(request):
+...
+```
+
+* ## Membuat akun pengguna dan input *dummy data*
+1. Buka halaman `http://localhost:8000/register` dan daftarkan *username* dan *password* pada *fields* yang tersedia.
+2. Setelah berhasil melakukan *register* lakukan login dengan akun yang sudah dibuat.
+3. Setelah berhasil login, lakukan `Add New Item` dan isilah item yang inggin dipilih. Setelah selesai jangan lupa untuk klik *button* `Add Item`.
+4. Lakukan kembali langkah-langkah di atas untuk akun dummy yang lain.
+
+* ## Menghubungkan model `Item` dengan `User`
+1. Buka `models.py` pada `main` dan tambahkan import berikut
+```python
+...
+from django.contrib.auth.models import User
+...
+```
+2. Pada model `Item`, tambahkan potongan kode berikut.
+```python
+class Item(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ...
+```
+3. Buka `views.py` pada `main` dan edit fungsi `create_item` menjadi seperti berikut.
+```python
+def create_item(request):
+    form = ItemForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+ ...
+```
+4. Ubah fungsi `show_main` menjadi seperti berikut.
+```python
+def show_main(request):
+    items = Item.objects.filter(user=request.user)
+
+    context = {
+        'name' : request.user.username,
+    ...
+...
+```
+5. Karena tedapat perubahan pada models, jangan lupa untuk melakukan migrasi dengan `python manage.py makemigrations` dan `python manage.py migrate` untuk mengaplikasikan migrasi.
+
+* ## Menampilkan detail informasi pengguna dan penerapan *cookies*
+1. Buka `views.py` pada `main` dan tambbahkan import berikut.
+```python
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+```
+2. Pada funsi `login_user` tambahkan *cookie* bernama `last_login` dengan mengganti kode pada blok `if user is not None` menjadi seperti berikut.
+```python
+...
+if user is not None:
+    login(request, user)
+    response = HttpResponseRedirect(reverse("main:show_main")) 
+    response.set_cookie('last_login', str(datetime.datetime.now()))
+    return response
+...
+```
+3. Pada fungsi `show_main` tambahkan informasi *cookie* pada variabel `context`.
+```python
+context = {
+        'name' : 'Pak Bepe',
+        'class' : 'PBP A',
+        'items' : items,
+        'last_login': request.COOKIES['last_login'],
+    }
+```
+4. Ubah fungsi `logout_user` menjadi seperti berikut.
+```python
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+```
+
+5. Buka file `main.html` dan tambahkan potongan kode berikut untuk menampilkan data *last loggin*.
+```python
+...
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+...
+```
+
+
