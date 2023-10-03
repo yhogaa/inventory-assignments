@@ -1,163 +1,137 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <head>
-        <style>
-            .item {
-                display: inline-block;
-                margin-right: 2px;
-                vertical-align: top;
-                max-width: 460px; 
-                word-wrap: break-word;
-            }
+<div style="background-color: #F8F8F8;">
+    <div class="container mt-1" style="padding: 20px;">
+        <center>
+            <h1 style="color: #FF5733;">Last Stand in Atomville</h1>
+            <img src="https://cdn.discordapp.com/attachments/1073225472974016614/1151173470512746547/fotor-ai-2023091203538.jpg" alt="Ilustrasi" class="img-fluid rounded" width="500" height="300">
+        </center>
 
-            .item-container {
-                border: 1px solid #ccc;
-                padding: 10px;
-                margin: 10px;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-
-            .item-category {
-                font-size: large;
-                font-weight: bold;
-            }
-
-            .item-info {
-                font-weight: bold;
-            }
-
-            .item-description {
-                margin-top: 5px;
-            }
-
-            hr {
-                border: none;
-                border-top: 1px solid #ccc;
-                margin: 10px 0;
-            }
-
-            .st{
-                border-top: 5px solid #ccc;
-            }
-
-        </style>
-    </head>
-
-    <!--TUGAS 2-->
-    
-    <center>
-        <h1>Last Stand in Atomville</h1>
-        <img src="https://cdn.discordapp.com/attachments/1073225472974016614/1151173470512746547/fotor-ai-2023091203538.jpg" alt="Ilustrasi" width="500" height="300">
-    </center>
-
-    <h5>Name: </h5>
-    <p>{{name}}</p> 
-
-    <h5>Class: </h5>
-    <p>{{class}}</p> 
-
-    <!--TUGAS 2-->
-
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-    <br>
-    
-    <center>
-        <p>
-            Pak Bepe mendengar kabar tentang potensi perang nuklir yang mungkin pecah dalam waktu dekat. 
-            Penuh kekhawatiran, dia tiba-tiba teringat memiliki sebuah bunker di suatu tempat terpencil di daerah kutek. 
-            Langsung saja, Pak Bepe merasa mendesak untuk segera mengumpulkan segala perlengkapan yang diperlukan dengan secepat mungkin.
-            Dia menyadari bahwa ini adalah satu-satunya cara untuk memastikan kelangsungan hidupnya dalam bunker tersebut 
-            selama masa krisis yang dapat berlangsung tanpa batas waktu yang bisa diprediksi. Pak Bepe juga ingin membagi setiap barangnya kedalam beberapa kategori
-            agar dapat dia cari dengan mudah ketika membutuhkannya.
-        </p>
-    </center>
-    
-
-    <h3>Berikut saran barang-barang yang mungkin bisa dibawa:</h3>
-
-    <div class="item">
-        <img src="https://drivethru.klikindomaret.com/tz0m/wp-content/uploads/sites/23/2021/05/le-minerale-600ml-1.jpg" alt="Air Mineral" width="300" height="200">
-        <figcaption><strong>Air mineral</strong></figcaption>
-        <figcaption>Sangat berguna agar dapat selalu terhidrasi, terutama dalam situasi darurat atau ketika akses ke sumber air bersih terbatas.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://mmc.tirto.id/image/2021/11/22/kotak-p3k-istockphoto_ratio-16x9.jpg" alt="Kotak P3K" width="300" height="200">
-        <figcaption><strong>Kotak P3K</strong></figcaption>
-        <figcaption>Penting dibawa ketika ada yang cedera atau memerlukan pertolongan pertama, 
-            karena kotak P3K berisi peralatan medis dasar yang dapat sangat membantu dalam memberikan pertolongan pertama dalam situasi darurat.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://s1.bukalapak.com/attachment/622881/makanan_kaleng.jpg" alt="Makanan Kaleng" width="300" height="200">
-        <figcaption><strong>Makanan Kaleng</strong></figcaption>
-        <figcaption>Tidak memungkinkan untuk memasak dalam bunker karena keterbatasan peralatan, makanan dalam kaleng adalah alternatif yang bagus.</figcaption>
-    </div>
-
-    <div class="item">
-        <img src="https://m.media-amazon.com/images/I/61DkQodTIDL._AC_UY1000_.jpg" alt="Gas Mask" width="300" height="200">
-        <figcaption><strong>Masker Gas</strong></figcaption>
-        <figcaption>Tidak mungkin akan selalu berada di dalam bunker dengan persediaan yang terbatas, 
-            masker gas ini sangat berguna untuk melindungi dari udara nuklir dan zat berbahaya lainnya ketika mencari persediaan keluar bunker.</figcaption>
-    </div>
-
-    <div class="st">
-        <p>Selain barang-barang yang telah disebutkan sebelumnya, Pak Bepe masih memiliki pilihan barang lain yang dapat dibawa dan berguna di masa depan. 
-            Sekarang adalah tugasmu untuk membantu Pak Bepe mengumpulkan barang-barang ini. 
-            Mungkin kamu bisa mulai dengan membuat daftar barang yang mungkin dibutuhkan Pak Bepe, lalu mencari barang-barang tersebut satu per satu. 
-            Ingatlah untuk selalu mempertimbangkan kegunaan jangka panjang dari setiap barang sebelum menambahkannya ke dalam daftar.
-        </p>
-    </div>
-
-    <h2>Barang yang dibawa Pak Bepe:</h2>
-    <h4>Jumlah barang bawaan Pak Bepe saat ini adalah {{ items.count }} barang.</h4>
-
-    <a href="{% url 'main:create_item' %}">
-        <button>
-            Add New Item
-        </button>
-    </a>
-
-    <table>
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
-        {% for item in items %}
-        <tr>
-            <div class="item-container">
-                <p class="item-category">Kategori: {{ item.category }}</p>
-                <p class="item-info">Nama Barang: {{ item.name }}</p>
-                <p class="item-info">Jumlah: {{ item.amount }}</p>
-                <form method="post" action="{% url 'main:add_amount' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-success">Tambah</button>
-                </form>
-                <form method="post" action="{% url 'main:reduce_amount' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Kurangi</button>
-                </form>
-                <p class="item-info">Tanggal Expired: {{ item.expiry_date }}</p>
-                <p class="item-info">Lokasi: {{ item.location }}</p>
-                <p class="item-description">Deskripsi: {{ item.description }}</p>
-                <a href="{% url 'main:delete_item' item.id %}">
-                    <button>
-                        Hapus
-                    </button>
-                </a>
+        <!-- Informasi tentang Pengguna -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5 style="color: #333;">Name:</h5>
+                <p>{{name}}</p>
             </div>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    <br />
+            <div class="col-md-6">
+                <h5 style="color: #333;">Class:</h5>
+                <p>{{class}}</p>
+            </div>
+        </div>
 
+        <!-- Tombol Logout -->
+        <a href="{% url 'main:logout' %}" class="btn btn-danger mt-3">Logout</a>
 
+        <h5 class="mt-4" style="color: #333;">Sesi terakhir login: {{ last_login }}</h5>
+
+        <!-- Cerita -->
+        <div class="mt-4">
+            <p style="color: #555;">
+                Pak Bepe mendengar kabar tentang potensi perang nuklir yang mungkin pecah dalam waktu dekat.
+                Penuh kekhawatiran, dia tiba-tiba teringat memiliki sebuah bunker di suatu tempat terpencil di daerah kutek.
+                Langsung saja, Pak Bepe merasa mendesak untuk segera mengumpulkan segala perlengkapan yang diperlukan dengan secepat mungkin.
+                Dia menyadari bahwa ini adalah satu-satunya cara untuk memastikan kelangsungan hidupnya dalam bunker tersebut
+                selama masa krisis yang dapat berlangsung tanpa batas waktu yang bisa diprediksi. Pak Bepe juga ingin membagi setiap barangnya kedalam beberapa kategori
+                agar dapat dia cari dengan mudah ketika membutuhkannya.
+            </p>
+        </div>
+
+        <h3 class="mt-4" style="color: #FF5733;">Berikut saran barang-barang yang mungkin bisa dibawa:</h3>
+
+        <!-- Daftar Barang -->
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card" style="width: 300px;">
+                    <img src="https://drivethru.klikindomaret.com/tz0m/wp-content/uploads/sites/23/2021/05/le-minerale-600ml-1.jpg" alt="Air Mineral" class="card-img-top" width="300" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Air mineral</h5>
+                        <p class="card-text">Sangat berguna agar dapat selalu terhidrasi, terutama dalam situasi darurat atau ketika akses ke sumber air bersih terbatas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 300px;">
+                    <img src="https://mmc.tirto.id/image/2021/11/22/kotak-p3k-istockphoto_ratio-16x9.jpg" alt="Kotak P3K"  class="card-img-top" width="300" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Kotak P3K</h5>
+                        <p class="card-text">Penting dibawa ketika ada yang cedera atau memerlukan pertolongan pertama, 
+                            karena kotak P3K berisi peralatan medis dasar yang dapat sangat membantu dalam memberikan pertolongan pertama dalam situasi darurat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 300px;">
+                    <img src="https://s1.bukalapak.com/attachment/622881/makanan_kaleng.jpg" alt="Makanan Kaleng" class="card-img-top" width="300" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Makanan Kaleng</h5>
+                        <p class="card-text">Tidak memungkinkan untuk memasak dalam bunker karena keterbatasan peralatan, makanan dalam kaleng adalah alternatif yang bagus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 300px;">
+                    <img src= "https://m.media-amazon.com/images/I/61DkQodTIDL._AC_UY1000_.jpg" alt="Gas Mask" class="card-img-top" width="300" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Masker Gas</h5>
+                        <p class="card-text">Tidak mungkin akan selalu berada di dalam bunker dengan persediaan yang terbatas, 
+                            masker gas ini sangat berguna untuk melindungi dari udara nuklir dan zat berbahaya lainnya ketika mencari persediaan keluar bunker.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daftar Barang yang Dibawa -->
+        <div class="mt-5">
+            <h2 style="color: #FF5733;">Barang yang dibawa Pak Bepe:</h2>
+            <h4 style="color: #333;">Jumlah barang bawaan Pak Bepe saat ini adalah {{ items.count }} barang.</h4>
+
+            <a href="{% url 'main:create_item' %}" class="btn btn-primary mt-3">Tambah Barang Baru</a>
+
+            <div class="row">
+                {% for item in items %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text">Kategori: {{ item.category }}</p>
+                            <p class="card-text">Jumlah: {{ item.amount }}</p>
+                            <p class="card-text">Tanggal Expired: {{ item.expiry_date }}</p>
+                            <p class="card-text">Lokasi: {{ item.location }}</p>
+                            <p class="card-text">Deskripsi: {{ item.description }}</p>
+                            <form method="post" action="{% url 'main:add_amount' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success mb-2">Tambah</button>
+                            </form>
+                            <form method="post" action="{% url 'main:reduce_amount' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger mb-2">Kurangi</button>
+                            </form>
+                            <a href="{% url 'main:delete_item' item.id %}" class="btn btn-danger">Hapus</a>
+                            <a href="{% url 'main:edit_item' item.pk %}" class="btn btn-primary ml-2">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .last-item {
+        background-color: #FFF0C9;
+    }
+</style>
+
+<script>
+    const items = document.querySelectorAll('.card.mb-4');
+    if (items.length > 0) {
+        items[items.length - 1].classList.add('last-item');
+    }
+</script>
 {% endblock content %}
