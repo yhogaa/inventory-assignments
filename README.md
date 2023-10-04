@@ -8,6 +8,7 @@
 - **[Tugas 2](#tugas-2)**<br>
 - **[Tugas 3](#tugas-3)**<br>
 - **[Tugas 4](#tugas-4)**<br>
+- **[Tugas 5](#tugas-5)**<br>
 
 # Tugas 2
 ## **Implementasi Aplikasi**
@@ -601,4 +602,193 @@ def logout_user(request):
 ...
 ```
 
+# Tugas 5
+## Manfaat dari _Element Selector_
+Dalam dunia web development, penggunaan selector dalam CSS sangat penting untuk mengatur tampilan elemen-elemen pada halaman web.  Berikut adalah penjelasan tentang berbagai jenis selector dalam CSS dan kapan waktu yang tepat untuk menggunakannya:
 
+- **Element Selector**: Digunakan untuk memilih elemen berdasarkan nama elemennya. Contoh: `p` akan memilih semua elemen `<p>`. Gunakan ketika ingin menerapkan gaya yang sama ke semua elemen dengan jenis yang sama.
+
+- **Class Selector**: Digunakan untuk memilih elemen berdasarkan atribut class-nya. Diawali dengan titik (.). Contoh: `.kelasMerah` akan memilih semua elemen dengan class “kelasMerah”. Gunakan ketika ingin menerapkan gaya ke sekelompok elemen yang memiliki atribut class yang sama, tetapi tidak semua elemen tersebut memiliki jenis yang sama.
+
+- **ID Selector**: Digunakan untuk memilih satu elemen berdasarkan atribut id-nya. Diawali dengan tanda pagar (#). Contoh: `#paragrafPertama` akan memilih elemen dengan id “paragrafPertama”. Gunakan ketika ingin menerapkan gaya khusus ke satu elemen saja di halaman web.
+
+- **Universal Selector**: Digunakan untuk memilih semua elemen di dalam dokumen HTML. Diwakili oleh tanda bintang (*). Contoh: `*` akan memilih semua elemen di halaman web. Gunakan ketika ingin menerapkan gaya ke semua elemen, biasanya digunakan untuk mereset gaya default dari browser.
+
+## HTML5 Tag
+HTML5 adalah versi terbaru dari HTML (HyperText Markup Language), standar yang digunakan dalam pembuatan halaman web. HTML5 memperkenalkan sejumlah tag baru yang memberikan lebih banyak fleksibilitas dan interaktivitas dalam mendesain halaman web.
+
+Tag dalam HTML5 sangat penting karena mereka membantu dalam mendefinisikan struktur dan konten dari halaman web. Setiap tag memiliki tujuan dan makna semantik tertentu, yang membantu browser dan teknologi assistive lainnya memahami konten dan struktur halaman web.
+
+Berikut adalah beberapa tag HTML5:
+- `<!DOCTYPE html>`: Mendefinisikan bahwa dokumen adalah HTML5.
+- `<header>`: Digunakan untuk container konten pengantar atau navigasi. Biasanya berisi elemen seperti judul, logo, dan menu navigasi.
+- `<nav>`: Digunakan untuk bagian navigasi situs web. Biasanya berisi daftar tautan menu.
+- `<main>`: Digunakan untuk konten utama dari dokumen. Setiap halaman harus memiliki satu elemen `<main>` dan harus unik dibandingkan konten lain di situs.
+- `<article>`: Digunakan untuk konten independen yang seharusnya dapat dibaca secara terpisah dari sisanya halaman, seperti postingan blog atau komentar forum.
+- `<section>`: Digunakan untuk mengelompokkan konten terkait di dalam dokumen.
+- `<aside>`: Digunakan untuk konten yang sedikit terkait dengan konten utama sekitarnya, seperti sidebar atau iklan.
+- `<footer>`: Digunakan untuk footer dari dokumen atau bagian. Biasanya berisi informasi seperti penulis, hak cipta, dan tautan ke kebijakan privasi.
+- `<figure>` dan `<figcaption>`: `<figure>` digunakan untuk melampirkan ilustrasi, diagram, foto, kode listing, dll., dan `<figcaption>` digunakan untuk memberikan keterangan atau ringkasan untuk konten dalam `<figure>`.
+- `<video>`, `<audio>`, dan `<source>`: Digunakan untuk menyematkan media seperti video dan audio ke dalam dokumen HTML
+
+Setiap tag ini memiliki tujuan dan penggunaan yang spesifik, jadi penting untuk memilih tag yang paling sesuai dengan konten yang dimiliki saat mendesain struktur halaman web.
+
+## Perbedaan antara _margin_ dan _padding_
+_Margin_ dan _padding_ adalah properti CSS yang digunakan untuk mengatur sisi tiap elemen pada HTML. Berikut adalah perbedaan antara _margin_ dan _padding_:
+
+- **_Margin_**
+    - Mengatur jarak dari luar elemen.
+    - Menciptakan ruang kosong di luar elemen.
+    - Tidak mempengaruhi ukuran elemen itu sendiri.
+    - Nilai default untuk _margin_ adalah 0.
+    - Dapat ditentukan hingga empat nilai _margin_ untuk setiap elemen.
+
+- **Padding**
+    - Mengatur jarak dari dalam elemen.
+    - Menciptakan ruang kosong di dalam elemen.
+    - Dapat memperbesar atau memperkecil elemen, tergantung pada nilainya.
+    - Nilai default untuk _padding_ adalah 0.
+    - Hanya dapat ditentukan hingga empat nilai _padding_ untuk setiap elemen.
+
+Dalam tata letak dan desain web, _margin_ dan _padding_ memiliki peran yang berbeda. _Margin_ digunakan untuk menata letak dari sisi luar, sedangkan _padding_ digunakan untuk menata letak dari sisi dalam.
+
+## Perbedaan antara _framework_ CSS Tailwind dan Bootstrap
+Bootstrap dan Tailwind adalah _framework_ CSS yang digunakan untuk memudahkan pengembangan antarmuka pengguna (_UI_) pada proyek web. Berikut adalah perbedaan antara Bootstrap dan Tailwind:
+
+- **Bootstrap**
+    - Lebih tua dan telah mengalami banyak perubahan selama bertahun-tahun.
+    - Lebih besar dalam hal ukuran file karena menyediakan banyak fitur dan kumpulan komponen.
+    - Memiliki kumpulan komponen dan fungsionalitas yang jauh lebih besar dibandingkan Tailwind.
+    - Dirancang untuk siap pakai dengan class yang sudah di style.
+    - Cocok digunakan untuk proyek yang membutuhkan banyak komponen dan fungsionalitas.
+
+- **Tailwind**
+    - Lebih baru dan lebih ringkas dibandingkan Bootstrap.
+    - Memiliki waktu pemuatan yang lebih cepat karena ukuran file yang lebih kecil.
+    - Hanya memerlukan file stylesheet dasar yang jumlahnya hingga 27kb.
+    - Dirancang untuk menghasilkan elemen UI yang fungsional, rapi, dan fleksibel.
+    - Cocok digunakan untuk proyek yang membutuhkan desain yang lebih custom dan fleksibel.
+
+Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya? Jika proyek membutuhkan banyak komponen dan fungsionalitas, Bootstrap adalah pilihan yang tepat. Namun, jika proyek membutuhkan desain yang lebih custom dan fleksibel, Tailwind adalah pilihan yang lebih baik. Selain itu, jika kecepatan pemuatan halaman menjadi pertimbangan, Tailwind juga lebih unggul karena ukuran file yang lebih kecil.
+
+## Implementasi desain web mennggunakan HTML, CSS, dan _framework_ CSS
+* ## Menambahkan Bootstrap pada aplikasi
+1. Pada `templates/base.html` tambahkan tag `<meta name="viewport">` **(kalau belum)** agar halaman web dapat menyesuaikan ukuran dan perilaku perangkat mobile.
+```html
+<head>
+    {% block meta %}
+        <meta charset="UTF-8" />
+        <meta 
+            name="viewport" 
+            content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+</head>
+```
+2. Tambahkan bootstrap CSS dan JS
+```html
+<head>
+    {% block meta %}
+        ...
+    {% endblock meta %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+```
+
+* ## `register.html` & `login.html`
+1. Gunakan bootstrap untuk membuat tampilan `register.html` dan `login.html` menjadi lebih menarik.
+```html
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Register</h1>
+                    ...
+                ...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        
+```
+
+- **`register.html`**
+2. Pada form jangan lupa tambahkan `{% csrf_token %}` untuk mencegah serangan CSRF, rapihkan tampilan form menggunakan bootstrap.
+```html
+<form method="POST">
+    {% csrf_token %} 
+    <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <ul class="errorlist">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        ....
+    </div>
+```
+`{{ form.username }}`, `{{ form.password1 }}`, dan `{{ form.password2 }}` adalah bidang formulir yang didefinisikan dalam Django. Jika ada kesalahan, blok ini akan mengulangi setiap kesalahan dan mencetaknya ke halaman web.
+
+- **`login.html`**
+2. Pada form jangan lupa tambahkan `{% csrf_token %}` untuk mencegah serangan CSRF, rapihkan tampilan form menggunakan bootstrap.
+```html
+<form method="POST">
+    {% csrf_token %} 
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+    </div>
+    ...
+```
+Tambahkan juga untuk menampilkan pesan kesalahan
+```html
+{% if messages %}
+    <ul class="list-group mt-3">
+        {% for message in messages %}
+            <li class="list-group-item list-group-item-danger">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+```
+
+3. Tambahkan CSS internal untuk mengatur tampilan halaman.
+```html
+<style>
+    .login {
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+```
+
+* ## Kustomisasi tampilan inventori
+1. Pada `main.html`, gunakan card untuk membuat tampilan inventory yang ditampilkan menjadi menarik.
+```html
+<div class="row">
+    {% for item in items %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-text">Kategori: {{ item.category }}</p>
+                <p class="card-text">Jumlah: {{ item.amount }}</p>
+                ...
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success mb-2">Tambah</button>
+                </form>
+                ...
+                <a href="{% url 'main:delete_item' item.id %}" class="btn btn-danger">Hapus</a>
+                <a href="{% url 'main:edit_item' item.pk %}" class="btn btn-primary ml-2">Edit</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+```
