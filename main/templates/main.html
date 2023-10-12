@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">Last Stand in Atomville</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Tombol Logout -->
+            <a href="{% url 'main:logout' %}" class="btn btn-danger ml-2">Logout</a>
+        </div>
+    </div>
+</nav>
+
 <div style="background-color: #F8F8F8;">
     <div class="container mt-1" style="padding: 20px;">
         <center>
@@ -19,9 +32,6 @@
                 <p>{{class}}</p>
             </div>
         </div>
-
-        <!-- Tombol Logout -->
-        <a href="{% url 'main:logout' %}" class="btn btn-danger mt-3">Logout</a>
 
         <h5 class="mt-4" style="color: #333;">Sesi terakhir login: {{ last_login }}</h5>
 
@@ -89,49 +99,129 @@
             <h2 style="color: #FF5733;">Barang yang dibawa Pak Bepe:</h2>
             <h4 style="color: #333;">Jumlah barang bawaan Pak Bepe saat ini adalah {{ items.count }} barang.</h4>
 
-            <a href="{% url 'main:create_item' %}" class="btn btn-primary mt-3">Tambah Barang Baru</a>
-
-            <div class="row">
-                {% for item in items %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <p class="card-text">Kategori: {{ item.category }}</p>
-                            <p class="card-text">Jumlah: {{ item.amount }}</p>
-                            <p class="card-text">Tanggal Expired: {{ item.expiry_date }}</p>
-                            <p class="card-text">Lokasi: {{ item.location }}</p>
-                            <p class="card-text">Deskripsi: {{ item.description }}</p>
-                            <form method="post" action="{% url 'main:add_amount' item.id %}">
+            <a href="{% url 'main:create_item' %}" class="btn btn-primary mb-4">Tambah Barang Baru</a>
+            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+            
+            <div class="row" id="item_container"></div>       
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form" onsubmit="return false;">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success mb-2">Tambah</button>
+                                <div class="mb-3">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="category" class="col-form-label">Category:</label>
+                                    <input type="text" class="form-control" id="category" name="category">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="amount" class="col-form-label">Amount:</label>
+                                    <input type="number" class="form-control" id="amount" name="amount" min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="expiry_date" class="col-form-label">Expiry Date:</label>
+                                    <input type="date" class="form-control" id="expiry_date" name="expiry_date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="location" class="col-form-label">Location:</label>
+                                    <input type="text" class="form-control" id="location" name="location">
+                                </div>
                             </form>
-                            <form method="post" action="{% url 'main:reduce_amount' item.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger mb-2">Kurangi</button>
-                            </form>
-                            <a href="{% url 'main:delete_item' item.id %}" class="btn btn-danger">Hapus</a>
-                            <a href="{% url 'main:edit_item' item.pk %}" class="btn btn-primary ml-2">Edit</a>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-            
+
         </div>
     </div>
 </div>
 
-<style>
-    .last-item {
-        background-color: #FFF0C9;
-    }
-</style>
-
 <script>
-    const items = document.querySelectorAll('.card.mb-4');
-    if (items.length > 0) {
-        items[items.length - 1].classList.add('last-item');
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshItems() {
+        document.getElementById("item_container").innerHTML = ""
+        const items = await getItems()
+        let htmlString = `<div class="row">`
+        items.forEach((item, index) => {
+            let style = "";
+            if (index === items.length - 1) {
+                style = "style='background-color: #FFF0C9;'";
+            }
+            let disableReduce = item.fields.amount <= 0 ? "disabled" : "";
+            let buttonColor = item.fields.amount <= 0 ? "btn-secondary" : "btn-warning";
+            htmlString += `
+                <div class="col-md-4">
+                    <div class="card mb-4" ${style}>
+                        <div class="card-header h4">
+                        ${item.fields.name}
+                        <button class="btn btn-warning btn-sm float-right" onclick="window.location.href='/edit-item/${item.pk}'">Edit</button>
+                    </div>
+                        <div class="card-body">
+                            <p class="card-text">Kategori: ${item.fields.category}</p>
+                            <p class="card-text">Jumlah: ${item.fields.amount}</p>
+                            <p class="card-text">Tanggal Expired: ${item.fields.expiry_date || "-"}</p>
+                            <p class="card-text">Lokasi: ${item.fields.location}</p>
+                            <p class="card-text">Deskripsi: ${item.fields.description}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success btn-block" onclick="window.location.href='/add-amount/${item.pk}'">Tambah</button>
+                            <button class="btn ${buttonColor} btn-block" onclick="window.location.href='/reduce-amount/${item.pk}'" ${disableReduce}>Kurangi</button>
+                            <button class="btn btn-danger btn-block" onclick="deleteItem(${item.pk})">Delete</button>
+                        </div>
+                    </div>
+                </div>`
+        })
+        htmlString += `</div>`
+        
+        document.getElementById("item_container").innerHTML = htmlString
+    }
+
+    refreshItems()
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addItem
+
+    async function deleteItem(itemId) {
+        const response = await fetch('/delete_item_ajax/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: 'item_id=' + encodeURIComponent(itemId)
+        })
+
+        if (response.status === 200) {
+            refreshItems();
+        } 
     }
 </script>
 {% endblock content %}
