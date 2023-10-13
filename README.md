@@ -985,7 +985,7 @@ urlpatterns = [
             </div>
 ```
 
-4. Buatlah `button` untuk menambahkan Modal.
+4. Buatlah `button` untuk menampiilkan Modal.
 ```html
 <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
 ```
@@ -1004,6 +1004,14 @@ urlpatterns = [
         return false
     }
     ...
+</script>
+```
+
+6. Tambahkan fungsi `onclick` pada modal untuk menjalankan fungsi `addItem()`.
+```html
+<script>
+...
+document.getElementById("button_add").onclick = addItem
 </script>
 ```
 
