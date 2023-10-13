@@ -97,7 +97,7 @@
         <!-- Daftar Barang yang Dibawa -->
         <div class="mt-5">
             <h2 style="color: #FF5733;">Barang yang dibawa Pak Bepe:</h2>
-            <h4 style="color: #333;">Jumlah barang bawaan Pak Bepe saat ini adalah {{ items.count }} barang.</h4>
+            <h4 style="color: #333;">Jumlah barang bawaan Pak Bepe saat ini adalah <span id="item-count">{{ items.count }}</span> barang.</h4>
 
             <a href="{% url 'main:create_item' %}" class="btn btn-primary mb-4">Tambah Barang Baru</a>
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
@@ -193,6 +193,8 @@
         htmlString += `</div>`
         
         document.getElementById("item_container").innerHTML = htmlString
+        const itemCountElement = document.querySelector('#item-count');
+        itemCountElement.textContent = items.length;
     }
 
     refreshItems()
@@ -209,19 +211,14 @@
 
     document.getElementById("button_add").onclick = addItem
 
-    async function deleteItem(itemId) {
-        const response = await fetch('/delete_item_ajax/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: 'item_id=' + encodeURIComponent(itemId)
-        })
+    function deleteItem(itemId) {
+        const formData = new FormData();
+        formData.append('item_id', itemId);
 
-        if (response.status === 200) {
-            refreshItems();
-        } 
+        fetch('/delete_item_ajax/', {
+            method: 'POST',
+            body: formData
+        }).then(refreshItems);
     }
 </script>
 {% endblock content %}
