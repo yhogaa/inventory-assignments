@@ -2,7 +2,7 @@
 
 > **Last Stand in Atomville** adalah sebuah aplikasi pengelolaan penyimpanan barang seseorang yang akan bertahan hidup di dalam sebuah bunker akibat dampak perang.
 
-> Akses Aplikasi di: [fadrian-yhoga-tugas.pbp.cs.ui.ac.id](fadrian-yhoga-tugas.pbp.cs.ui.ac.id)
+> Akses Aplikasi di: [fadrian-yhoga-tugas.pbp.cs.ui.ac.id](http://fadrian-yhoga-tutorial.pbp.cs.ui.ac.id/)
 
 ### Daftar Tugas:
 - **[Tugas 2](#tugas-2)**<br>
