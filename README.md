@@ -3,7 +3,7 @@
 
 > **Fragrance Gate** adalah sebuah website untuk mengelola penyimpanan _niche_, _designer_, _dupes_, atau bahkan lokal perfume anda.
 
-> Akses Aplikasi di: [fadrian-yhoga-tugas.pbp.cs.ui.ac.id](http://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/)
+> Akses Aplikasi di: [fadrian-yhoga-tugas.pbp.cs.ui.ac.id](https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/)
 
 ### Daftar Tugas:
 - **[Tugas 2](#tugas-2)**<br>
