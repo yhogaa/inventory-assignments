@@ -1,6 +1,7 @@
-# Last Stand in Atomville 🌋😷
+# ~~Last Stand in Atomville 🌋😷~~
+# Fragrance Gate 🧴🌬️✨🌸
 
-> **Last Stand in Atomville** adalah sebuah aplikasi pengelolaan penyimpanan barang seseorang yang akan bertahan hidup di dalam sebuah bunker akibat dampak perang.
+> **Last Stand in Atomville** adalah sebuah website untuk mengelola penyimpanan _niche_, _designer_, _dupes_, atau bahkan lokal perfume anda.
 
 > Akses Aplikasi di: [fadrian-yhoga-tugas.pbp.cs.ui.ac.id](http://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/)
 

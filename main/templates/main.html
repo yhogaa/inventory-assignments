@@ -3,9 +3,9 @@
 {% block content %}
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
-        <a class="navbar-brand" href="#">Last Stand in Atomville</a>
+        <a class="navbar-brand" href="#">Frarance Gate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <a href="{% url 'main:logout' %}" class="btn btn-danger ml-2">Logout</a>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Tombol Logout -->
@@ -17,8 +17,7 @@
 <div style="background-color: #F8F8F8;">
     <div class="container mt-1" style="padding: 20px;">
         <center>
-            <h1 style="color: #FF5733;">Last Stand in Atomville</h1>
-            <img src="https://cdn.discordapp.com/attachments/1073225472974016614/1151173470512746547/fotor-ai-2023091203538.jpg" alt="Ilustrasi" class="img-fluid rounded" width="500" height="300">
+            <h1 style="color: #FF5733;">Fragrance Gate</h1>
         </center>
 
         <!-- Informasi tentang Pengguna -->
@@ -38,69 +37,17 @@
         <!-- Cerita -->
         <div class="mt-4">
             <p style="color: #555;">
-                Pak Bepe mendengar kabar tentang potensi perang nuklir yang mungkin pecah dalam waktu dekat.
-                Penuh kekhawatiran, dia tiba-tiba teringat memiliki sebuah bunker di suatu tempat terpencil di daerah kutek.
-                Langsung saja, Pak Bepe merasa mendesak untuk segera mengumpulkan segala perlengkapan yang diperlukan dengan secepat mungkin.
-                Dia menyadari bahwa ini adalah satu-satunya cara untuk memastikan kelangsungan hidupnya dalam bunker tersebut
-                selama masa krisis yang dapat berlangsung tanpa batas waktu yang bisa diprediksi. Pak Bepe juga ingin membagi setiap barangnya kedalam beberapa kategori
-                agar dapat dia cari dengan mudah ketika membutuhkannya.
+                Berikan wangi terbaikmu, simpanlah koleksi parfum kamu disini!.
             </p>
-        </div>
-
-        <h3 class="mt-4" style="color: #FF5733;">Berikut saran barang-barang yang mungkin bisa dibawa:</h3>
-
-        <!-- Daftar Barang -->
-        <div class="row mt-4">
-            <div class="col-md-3">
-                <div class="card" style="width: 300px;">
-                    <img src="https://drivethru.klikindomaret.com/tz0m/wp-content/uploads/sites/23/2021/05/le-minerale-600ml-1.jpg" alt="Air Mineral" class="card-img-top" width="300" height="200">
-                    <div class="card-body">
-                        <h5 class="card-title">Air mineral</h5>
-                        <p class="card-text">Sangat berguna agar dapat selalu terhidrasi, terutama dalam situasi darurat atau ketika akses ke sumber air bersih terbatas.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card" style="width: 300px;">
-                    <img src="https://mmc.tirto.id/image/2021/11/22/kotak-p3k-istockphoto_ratio-16x9.jpg" alt="Kotak P3K"  class="card-img-top" width="300" height="200">
-                    <div class="card-body">
-                        <h5 class="card-title">Kotak P3K</h5>
-                        <p class="card-text">Penting dibawa ketika ada yang cedera atau memerlukan pertolongan pertama, 
-                            karena kotak P3K berisi peralatan medis dasar yang dapat sangat membantu dalam memberikan pertolongan pertama dalam situasi darurat.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card" style="width: 300px;">
-                    <img src="https://s1.bukalapak.com/attachment/622881/makanan_kaleng.jpg" alt="Makanan Kaleng" class="card-img-top" width="300" height="200">
-                    <div class="card-body">
-                        <h5 class="card-title">Makanan Kaleng</h5>
-                        <p class="card-text">Tidak memungkinkan untuk memasak dalam bunker karena keterbatasan peralatan, makanan dalam kaleng adalah alternatif yang bagus.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card" style="width: 300px;">
-                    <img src= "https://m.media-amazon.com/images/I/61DkQodTIDL._AC_UY1000_.jpg" alt="Gas Mask" class="card-img-top" width="300" height="200">
-                    <div class="card-body">
-                        <h5 class="card-title">Masker Gas</h5>
-                        <p class="card-text">Tidak mungkin akan selalu berada di dalam bunker dengan persediaan yang terbatas, 
-                            masker gas ini sangat berguna untuk melindungi dari udara nuklir dan zat berbahaya lainnya ketika mencari persediaan keluar bunker.</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Daftar Barang yang Dibawa -->
         <div class="mt-5">
-            <h2 style="color: #FF5733;">Barang yang dibawa Pak Bepe:</h2>
-            <h4 style="color: #333;">Jumlah barang bawaan Pak Bepe saat ini adalah <span id="item-count">{{ items.count }}</span> barang.</h4>
+            <h2 style="color: #FF5733;">Koleksi Parfum kamu:</h2>
+            <h4 style="color: #333;">Jumlah parfum kamu saat ini adalah <span id="item-count">{{ items.count }}</span> parfum.</h4>
 
-            <a href="{% url 'main:create_item' %}" class="btn btn-primary mb-4">Tambah Barang Baru</a>
-            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+            <a href="{% url 'main:create_item' %}" class="btn btn-primary mb-4">Tambah Parfum Baru</a>
+            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Perfume by AJAX</button>
             
             <div class="row" id="item_container"></div>       
             
@@ -119,8 +66,8 @@
                                     <input type="text" class="form-control" id="name" name="name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="category" class="col-form-label">Category:</label>
-                                    <input type="text" class="form-control" id="category" name="category">
+                                    <label for="category" class="col-form-label">Price:</label>
+                                    <input type="number" class="form-control" id="price" name="price">
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="col-form-label">Amount:</label>
@@ -129,14 +76,6 @@
                                 <div class="mb-3">
                                     <label for="description" class="col-form-label">Description:</label>
                                     <textarea class="form-control" id="description" name="description"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="expiry_date" class="col-form-label">Expiry Date:</label>
-                                    <input type="date" class="form-control" id="expiry_date" name="expiry_date">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="location" class="col-form-label">Location:</label>
-                                    <input type="text" class="form-control" id="location" name="location">
                                 </div>
                             </form>
                         </div>
@@ -176,10 +115,8 @@
                         <button class="btn btn-warning btn-sm float-right" onclick="window.location.href='/edit-item/${item.pk}'">Edit</button>
                     </div>
                         <div class="card-body">
-                            <p class="card-text">Kategori: ${item.fields.category}</p>
+                            <p class="card-text">Harga: ${item.fields.price}</p>
                             <p class="card-text">Jumlah: ${item.fields.amount}</p>
-                            <p class="card-text">Tanggal Expired: ${item.fields.expiry_date || "-"}</p>
-                            <p class="card-text">Lokasi: ${item.fields.location}</p>
                             <p class="card-text">Deskripsi: ${item.fields.description}</p>
                         </div>
                         <div class="card-footer">
