@@ -54,28 +54,13 @@ def logout(request):
 
 @csrf_exempt
 def register(request):
-    if request.method == "POST":
-        input = json.loads(request.body)
+    username = request.POST.get('username')
+    password = request.POST.get('password')
 
-        username = input['username']
-        password = input['password']
-        password_confirmation = input['confirmPassword']
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({"status": False, "message": "Username already used."}, status=400)
 
-        if password != password_confirmation:
-            return JsonResponse({
-                "status": "Gagal",
-                "message": "Password tidak sama."
-            }, status=401)
+    user = User.objects.create_user(username=username, password=password)
+    user.save()
 
-        user = User.objects.create_user(username = username, password = password)
-        user.save()
-
-        return JsonResponse({
-            "status": "Berhasil",
-            "message": "Register berhasil!"
-        }, status=200)
-
-    return JsonResponse({
-        "status": "Gagal",
-        "message": "Register gagal."
-    }, status=401)
+    return JsonResponse({"username": user.username, "status": True, "message": "Register successful!"}, status=201)

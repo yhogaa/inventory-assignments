@@ -128,6 +128,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+CSRF_TRUSTED_ORIGINS = ['https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id']
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
