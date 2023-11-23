@@ -128,6 +128,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 CSRF_TRUSTED_ORIGINS = ['https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id']
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -141,16 +154,3 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 
 SESSION_COOKIE_SAMESITE = 'None'
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
